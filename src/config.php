@@ -4,7 +4,7 @@ define("SECRET_KEY", "zero_ep");
 
 
 // VARIABLES DE ENTORNO
-define('DB_HOST', '');
-define('DB_USER', '');
-define('DB_PASS', '');
-define('DB_NAME', '');
+define('DB_HOST', 'db');
+define('DB_USER', 'user');
+define('DB_PASS', 'userpassword');
+define('DB_NAME', 'testdb');

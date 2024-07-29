@@ -18,6 +18,21 @@ class UserService
         $this->db = DataBase::getInstance();
     }
 
+    public function show($request, $response, $args){
+        $connection = $this->db->getConnection();
+        $query = "select * from test_users;";
+        $result = $connection->query($query);
+        $user = [];
+        while ($row = $result->fetch_assoc()){
+            $user = new UserModel();
+            $user->setId($row['user_id']);
+            $user->setName($row['user_name']);
+            $user->setSurname($row['user_surname']);
+            $user->setEmail($row['user_email']);
+            $user->setBirthdate($row['user_birthdate']);
+        }
+        return $user;
+    }
 
     /**
      * Obtiene todos los empleados de la base de datos.

@@ -18,6 +18,15 @@ class MyTest extends TestCase
         $this->app->post('/api/create', 'App\Controllers\PersonController:insert');
         $this->app->put('/api/update/{id}', 'App\Controllers\PersonController:insert');
         $this->app->delete('/api/delete/{id}', 'App\Controllers\PersonController:delete');
+        $this->app->get('/api/user/show', 'App\Controllers\UserController:show');
+    }
+
+    public function testGetUser(){
+        $request = (new ServerRequestFactory())->createServerRequest('GET', '/api/user/show');
+        $response = $this->app->handle($request);
+
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertEquals('Retorna usuarios', (string)$response->getBody(), "");
     }
 
     public function testMethodGet1()

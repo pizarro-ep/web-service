@@ -18,6 +18,16 @@ class UserController {
         return $response->getBody()->write('Llega aqui');
     }
 
+    public function show(Request $request, Response $response, $args){
+        try {
+            $result = $this->userService->show($request, $response, $args);
+            $response->getBody()->write(json_encode($result));
+            return $response->withHeader('Content-Type', 'application/json');
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
     public function getAllUsers(Request $request, Response $response, $args) {
         $users = $this->userService->getAllUsers();
         if($users){
