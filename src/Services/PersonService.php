@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-// use App\Core\DataBase;
+use App\Core\DataBase;
 
 /**
  * Clase PersonService
@@ -44,9 +44,9 @@ class PersonService
 
         if ($id)
             return ["name" => "Pedro", "address" => "Zorritos 1223", "id" => $id];
-        elseif($queryParams){
+        elseif ($queryParams) {
             return ["message" => "Retorna un arreglo bidimensional con consulta condicional", "params" => $queryParams];
-        }else{
+        } else {
             return ["message" => "Retorna un areglo bidimensional con consulta simple"];
         }
     }

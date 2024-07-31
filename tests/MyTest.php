@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use PHPUnit\Framework\TestCase;
 use Slim\Factory\AppFactory;
@@ -21,13 +21,6 @@ class MyTest extends TestCase
         $this->app->get('/api/user/show', 'App\Controllers\UserController:show');
     }
 
-    public function testGetUser(){
-        $request = (new ServerRequestFactory())->createServerRequest('GET', '/api/user/show');
-        $response = $this->app->handle($request);
-
-        $this->assertSame(200, $response->getStatusCode());
-        $this->assertEquals('Retorna usuarios', (string)$response->getBody(), "");
-    }
 
     public function testMethodGet1()
     {
@@ -38,7 +31,7 @@ class MyTest extends TestCase
         $this->assertEquals('Retorna un arreglo bidimencional con consulta condicional', (string)$response->getBody(), "Mostrar datos");
     }
     public function testMethodGet2()
-    {        
+    {
         $request = (new ServerRequestFactory())->createServerRequest('GET', "/api/show/1");
         $response = $this->app->handle($request);
 
@@ -63,11 +56,21 @@ class MyTest extends TestCase
         $this->assertSame(200, $response->getStatusCode());
         $this->assertEquals('Se ha actualizado correctamente', (string)$response->getBody(), "Actualizar datos");
     }
-    public function testMethodDelete(){
+    public function testMethodDelete()
+    {
         $request = (new ServerRequestFactory())->createServerRequest('DELETE', '/api/delete/1');
         $response = $this->app->handle($request);
 
         $this->assertSame(200, $response->getStatusCode());
         $this->assertEquals('Se ha eliminado correctamente', (string)$response->getBody(), "Eliminar datos");
+    }
+
+    public function testGetUser()
+    {
+        $request = (new ServerRequestFactory())->createServerRequest('GET', '/api/user/show');
+        $response = $this->app->handle($request);
+
+        $this->assertSame(200, $response->getStatusCode());
+        $this->assertEquals('Retorna usuarios', (string)$response->getBody(), "");
     }
 }

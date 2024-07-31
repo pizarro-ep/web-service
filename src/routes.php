@@ -1,11 +1,12 @@
 <?php
+
 use App\Auth\Auth;
 use App\Controllers\PersonController;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\Twig;
 
 $app->get('/', function ($request, $response) {
-    $view = Twig::fromRequest($request);    
+    $view = Twig::fromRequest($request);
     return $view->render($response, 'home.twig', [
         'name' => 'John',
     ]);
@@ -21,7 +22,7 @@ $app->get('/v1', function ($request, $response, $args) {
 });
 
 // vistas
-$app->group('/view', function(RouteCollectorProxy $group){
+$app->group('/view', function (RouteCollectorProxy $group) {
     $group->get('/persons', PersonController::class . ':index');
     $group->get('/user', PersonController::class . ':index');
     $group->get('/cousers', PersonController::class . ':index');
@@ -29,22 +30,22 @@ $app->group('/view', function(RouteCollectorProxy $group){
 });
 
 // peticiones
-$app->group('/api/v1', function(RouteCollectorProxy $group){
-    $group->group('/persons', function(RouteCollectorProxy $persons){
+$app->group('/api/v1', function (RouteCollectorProxy $group) {
+    $group->group('/persons', function (RouteCollectorProxy $persons) {
         $persons->get('', PersonController::class . ':show');
         $persons->get('/{id}', PersonController::class . ':show');
         $persons->post('/create', PersonController::class . ':insert');
         $persons->put('/update/{id}', PersonController::class . ':insert');
         $persons->delete('/delete/{id}', PersonController::class . ':delete');
     });
-    $group->group('/users', function(RouteCollectorProxy $persons){
-        $persons->get('', PersonController::class . ':show');
-        $persons->get('/{id}', PersonController::class . ':show');
-        $persons->post('/create', PersonController::class . ':insert');
-        $persons->put('/update/{id}', PersonController::class . ':insert');
-        $persons->delete('/delete/{id}', PersonController::class . ':delete');
+    $group->group('/users', function (RouteCollectorProxy $users) {
+        $users->get('', 'App\Controllers\UserController:show');
+        $users->get('/{id}', 'App\Controllers\UserController:show');
+        $users->post('/create', 'App\Controllers\UserController:insert');
+        $users->put('/update/{id}', 'App\Controllers\UserController:insert');
+        $users->delete('/delete/{id}', 'App\Controllers\UserController:delete');
     });
-    $group->group('/other', function(RouteCollectorProxy $persons){
+    $group->group('/other', function (RouteCollectorProxy $persons) {
         $persons->get('', 'App\Controllers\PersonController:show');
         $persons->get('/{id}', 'App\Controllers\PersonController:show');
         $persons->post('/create', 'App\Controllers\PersonController:insert');
