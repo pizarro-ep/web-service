@@ -1,10 +1,14 @@
+# Servicio web
+
 Un pequeño servicio web creado con el patrón MVC usando Docker como contenedor
 - Lenguaje: php
 - Base de datos: MySQL
 - Framework: Slim framework, PHPUnit 
 
-####################################################################
-LINEA DE COMANDOS
+
+
+
+## LINEA DE COMANDOS
 
 composer dump-autoload                                              Generar archivos de autocarga esencial para namespaces
 php -S localhost:port -t public                                     iniciar servidor
