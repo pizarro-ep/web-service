@@ -1,7 +1,7 @@
 Un pequeño servicio web creado con el patrón MVC usando Docker como contenedor
 - Lenguaje: php
 - Base de datos: MySQL
-- Framework: Slim framework, PHPUnit
+- Framework: Slim framework, PHPUnit 
 
 ####################################################################
 LINEA DE COMANDOS
