@@ -1,35 +1,93 @@
 # Servicio web
-
+***
 Un pequeño servicio web creado con el patrón MVC usando Docker como contenedor
 - Lenguaje: php
 - Base de datos: MySQL
 - Framework: Slim framework, PHPUnit 
 
 
-
-
 ## LINEA DE COMANDOS
 
+Generar archivos de autocarga esencial para namespaces
+```bash
+composer dump-autoload
 ```
-composer dump-autoload                                              Generar archivos de autocarga esencial para namespaces
+
+Iniciar servidor en slim
+```bash
+php -S localhost:port -t public
 ```
 
-php -S localhost:port -t public                                     iniciar servidor
+Codificar y decodificar el token
+```bash
+composer require firebase/php-jwt
+```
 
-composer require firebase/php-jwt                                   nos permite codificar y decodificar el token
-composer require tuupola/slim-jwt-auth                              midleware para trabajar con slim y jwt
-composer require twig/twig                                          para trabajar con vistas
+Midleware para trabajar con slim y jwt
+```bash
+composer require tuupola/slim-jwt-auth                              
+```
 
-composer require --dev phpunit/phpunit                              instalar phpunit
-./vendor/bin/phpunit                                                correr phpunit
+Para trabajar con vistas en slim
+```bash
+composer require twig/twig
+```
 
-docker-compose up -d                                               levantar docker en desarrollo
-docker-compose up --build                                          construir docker
-docker-compose down                                                reiniciar docker
-docker ps                                                           mostrar detalles de los contenedores de docker
-docker exec -it <name_container> bash                               acceder al conenedor
-mysql -u user -p                                                    usar mysql en el cotenedor
-docker exec -it <name_container> mysql -u <username> -p             ingresar al contenedor de mysql
-docker-compose exec php php -v                                      version de php en docker
-docker-compose exec php ./vendor/bin/phpunit --version              version de phpunit en docker
-docker-compose exec php ./vendor/bin/phpunit --config phpunit.xml   ejecutar phpunit en docker
+Intalar y correr phpunit
+```bash
+composer require --dev phpunit/phpunit
+./vendor/bin/phpunit
+```
+
+
+### Docker
+
+Levantar un sevidor en desarrollo
+```bash
+docker-compose up -d
+```
+
+Construir docker
+```bash
+docker-compose up --build
+```
+
+Reiniciar docker
+```bash
+docker-compose down
+```
+
+Mostrar detalles de los contenedores de docker
+```bash
+docker ps
+```
+
+Acceder a un contenedor de docker `<name_container>`
+```bash
+docker exec -it <name_container> bash
+```
+
+Acceder a mysql en el contenedor
+```bash
+mysql -u user -p
+```
+
+Ingresar al cotenedor de mysql y usarlo
+```bash
+docker exec -it <name_container> mysql -u <username> -p
+```
+
+Version de php en docker
+```bash
+docker-compose exec php php -v
+```
+
+Version de phpunit en docker
+```bash
+docker-compose exec php ./vendor/bin/phpunit --version
+```
+
+Ejecutar phpunit en docker
+```bash
+docker-compose exec php ./vendor/bin/phpunit --config phpunit.xml
+```
