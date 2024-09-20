@@ -10,7 +10,10 @@ Un pequeño servicio web creado con el patrón MVC usando Docker como contenedor
 
 ## LINEA DE COMANDOS
 
+```
 composer dump-autoload                                              Generar archivos de autocarga esencial para namespaces
+```
+
 php -S localhost:port -t public                                     iniciar servidor
 
 composer require firebase/php-jwt                                   nos permite codificar y decodificar el token
